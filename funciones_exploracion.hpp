@@ -27,7 +27,7 @@ class feDobleDispersion : public ExplorationFunction<Key> {
  public:
   // Constructor al que se le pasa la función de dispersión f(k) utilizada
   feDobleDispersion(DispersionFunction<Key>* funcion_dispersion) : funcion_dispersion_(funcion_dispersion) {};
-  unsigned operator()(const Key& k, unsigned i) const {return ((*funcion_dispersion_(k)) * i)}; // f(k) * i
+  unsigned operator()(const Key& k, unsigned i) const {return ((*funcion_dispersion_(k)) * i);} // f(k) * i
  private:
   //Función de dispersión que inicializamos en el constructor
   DispersionFunction<Key>* funcion_dispersion_;
