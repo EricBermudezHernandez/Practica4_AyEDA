@@ -9,9 +9,10 @@
 // implementa la clase genérica List<Key> que deriva de Sequence<Key>.
 
 template <class Key>
-class List : public Sequence<key> {
+class List : public Sequence<Key> {
  public:
-  List = default;
+  // Constructor por defecto
+  List() = default;
   bool Search(const Key& k) const;
   bool Insert(const Key& k);
   bool IsFull() const;
@@ -19,6 +20,8 @@ class List : public Sequence<key> {
  private:
   std::list<Key> lista_; // Lista enlazada que sirve para meter todos los elementos en la tabla
 };
+
+// ==== Métodos heredados ====
 
 template <class Key>
 bool List<Key>::Search(const Key& k) const {
