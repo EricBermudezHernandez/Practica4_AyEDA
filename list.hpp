@@ -25,12 +25,16 @@ class List : public Sequence<Key> {
 
 template <class Key>
 bool List<Key>::Search(const Key& k) const {
+  int posicion{0};
   // Recorremos la lista entera, si encontramos el elemento devolvemos que lo hemos encontrado con un "true"
   for (auto& elemento : lista_) {
+    posicion++;
     if (elemento == k) {
+      std::cout << "El elemento se encuentra en la posición: " << posicion << std::endl;
       return true;
     }
   }
+  std::cout << "El elemento no se encuentra en la secuencia" << std::endl;
   return false; // No hemos encontrado el elemento
 }
 
@@ -39,8 +43,10 @@ bool List<Key>::Insert(const Key& k) {
   //Si no existe el elemento en la lista de sinonimos de la posición correspondiente de la tabla hash, se añade al final
   if (!Search(k)) {
     lista_.push_back(k); // Se añade el elemento al final de la lista
+    std::cout << "El elemento se pudo insertar correctamente en la secuencia" << std::endl;
     return true;
   }
+  std::cout << "No se pudo insertar el elemento en la secuencia" << std::endl;
   return false; // No se ha podido añadir el elemento en la lista
 }
 
