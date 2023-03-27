@@ -7,7 +7,7 @@
 template <class Key>
 class DispersionFunction {
  public:
-  unsigned operator()(const Key& k) const = 0;
+  virtual unsigned operator()(const Key& k) const = 0;
 };
 
 template <class Key>
@@ -42,9 +42,10 @@ class fdPseudoRandom : public DispersionFunction<Key> {
 template <class Key>
 unsigned fdSum<Key>::operator()(const Key& k) const {
   unsigned suma{0};
+  long aux{k};
   while (k > 0) {
-    suma += k % 10;
-    k /= 10;
+    suma += aux % 10;
+    aux /= 10;
   }
   // Después de sumar todos los dígitos del número le hacemos el módulo con el tamaño de la tabla hash
   return (suma % tableSize_);
