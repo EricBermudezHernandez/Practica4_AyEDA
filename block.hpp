@@ -44,11 +44,15 @@ Block<Key>::Block(int size) {
 
 template <class Key>
 bool Block<Key>::Search(const Key& k) const {
+  int posicion{0};
   for (auto& elementos : block_) {
+    posicion++;
     if (elementos == k) {
+      std::cout << "El elemento se encuentra en la posición: " << posicion << std::endl;
       return true; // Hemos encontrado el elemento, retornamos "true"
     }
   }
+  std::cout << "El elemento no se encuentra en la secuencia" << std::endl;
   return false; // No hemos encontrado el elemento, retornamos "false"
 }
 
@@ -58,8 +62,10 @@ bool Block<Key>::Insert(const Key& k) {
   if (!IsFull() && !Search(k)) { // Si no está lleno y no se encuentra en el bloque, se introduce
     numero_elementos_++; // Se añade un elemento más 
     block_.push_back(k); // Metemos el elemento en el vector
+    std::cout << "El elemento se pudo insertar correctamente en la secuencia" << std::endl;
     return true; // Se pudo introducir el elemento, retornamos "true"
   }
+  std::cout << "No se pudo insertar el elemento en la secuencia" << std::endl;
   return false; // No se pudo introducir el elemento, retornamos "false"
 }
 
