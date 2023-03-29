@@ -87,7 +87,9 @@ int main() {
   case 2: // Se ha escogido la función de buscar
     std::cout << "Introduce el valor que quieres buscar: ";
     std::cin >> elemento;
-    hash_table->Search(elemento);
+    if (!hash_table->Search(elemento)) {
+      std::cout << "El elemento no se encuentra en la secuencia" << std::endl;
+    } 
     break;
   default:
     std::cout << "Opción: " << eleccion << " incorrecta" << std::endl;
