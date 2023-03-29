@@ -28,13 +28,11 @@ bool List<Key>::Search(const Key& k) const {
   int posicion{0};
   // Recorremos la lista entera, si encontramos el elemento devolvemos que lo hemos encontrado con un "true"
   for (auto& elemento : lista_) {
-    posicion++;
     if (elemento == k) {
-      std::cout << "El elemento se encuentra en la posición: " << posicion << std::endl;
       return true;
     }
+    posicion++;
   }
-  std::cout << "El elemento no se encuentra en la secuencia" << std::endl;
   return false; // No hemos encontrado el elemento
 }
 
