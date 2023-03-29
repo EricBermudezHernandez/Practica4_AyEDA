@@ -68,9 +68,11 @@ bool HashTable<Key>::Search(const Key& k) const {
   } else {
     int attempt = 0;
     while (attempt < tableSize_) {
-      index = (*fe_)(k, index);
+      index = (*fe_)(k, index) % tableSize_;
       if (index < tableSize_) {
         (*table_[index]).Search(k);
+        std::cout << "El elemento se encuentra en la posición: " << index
+                  << std::endl;
         return true;
       }
       attempt++;
@@ -88,7 +90,7 @@ bool HashTable<Key>::Insert(const Key& k) {
   if (!(*table_[index]).Insert(k)) {
     int attempt = 0;
     while (attempt < tableSize_) {
-      index = (*fe_)(k, index);
+      index = ((*fe_)(k, index)) % tableSize_;
       if (index < tableSize_) {
         (*table_[index]).Insert(k);
         return true;
